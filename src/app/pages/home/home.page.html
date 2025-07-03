@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title> Lista de Tarefas </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngIf="tarefaCollection.length < 1"
+      ><ion-label style="text-align: center; width: 100%; display: block"
+        >NÃO HÁ TAREFAS</ion-label
+      ></ion-item
+    >
+    <ion-item-sliding *ngFor="let item of tarefaCollection">
+      <ion-item (click)="openActions(item)">
+        <ion-label>
+          <h3 *ngIf="item.feito!=false"><del>{{item.nome}}</del></h3>
+          <h3 *ngIf="item.feito==false">{{item.nome}}</h3>
+          <p *ngIf="item.feito==false">Pendente</p>
+          <p *ngIf="item.feito!=false">Realizado</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option color="danger" (click)="delete(item)"
+          ><ion-icon slot="start" name="trash"></ion-icon
+          >Deletar</ion-item-option
+        >
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="showAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
