@@ -6,11 +6,11 @@ import { IonicModule } from '@ionic/angular';
 import {
   IonHeader, IonToolbar, IonTitle, IonContent,
   IonFab, IonFabButton, IonIcon, AlertController,
-  IonList, IonItem, IonLabel, IonItemSliding, IonItemOptions, IonItemOption, IonButton, IonActionSheet, ActionSheetController
+  IonList, IonItem, IonLabel, IonItemSliding, IonItemOptions, IonItemOption, IonFooter, IonAvatar, IonBadge, IonButton, IonActionSheet, ActionSheetController
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
-import { add, checkmarkCircle, closeCircle, radioButtonOff, trash } from 'ionicons/icons';
+import { add, checkmarkCircle, closeCircle, informationCircle, radioButtonOff, trash } from 'ionicons/icons';
 import { TarefaService } from '../../services/tarefa.service';
 
 @Component({
@@ -22,8 +22,8 @@ import { TarefaService } from '../../services/tarefa.service';
     IonHeader, IonToolbar, IonTitle,
     IonContent, IonFab, IonFabButton, IonIcon,
     CommonModule, FormsModule, IonItemSliding,
-    IonItemOptions, IonItemOption,
-  ],
+    IonItemOptions, IonItemOption, IonFooter
+],
 })
 export class HomePage {
   tarefaCollection: any[] = [];
@@ -33,7 +33,7 @@ export class HomePage {
     private tarefaService: TarefaService,
     private actionSheetCtrl: ActionSheetController
   ) {
-    addIcons({ add, trash, radioButtonOff, checkmarkCircle, closeCircle });
+    addIcons({ add, trash, radioButtonOff, checkmarkCircle, closeCircle, informationCircle });
   }
 
   ionViewDidEnter() {
@@ -47,7 +47,7 @@ export class HomePage {
   public async showAdd() {
     const alert = await this.alertController.create({
       header: 'Informe a tarefa',
-      cssClass: 'custom-alert',
+      cssClass: 'alert-wrapper',
       inputs: [
         {
           name: 'tarefa',
@@ -60,11 +60,11 @@ export class HomePage {
         {
           text: 'Cancelar',
           role: 'cancel',
-          cssClass: 'alert-button-cancel',
+          cssClass: 'custom-alert-confirm',
         },
         {
           text: 'Confirmar',
-          cssClass: 'alert-button-confirm',
+          cssClass: 'custom-alert',
           handler: (data) => {
             const nome = data.tarefa?.trim();
             if (nome) {
@@ -86,11 +86,11 @@ export class HomePage {
     });
   }
 
-  public async openActions(tarefa: any) {
+  async openActions(tarefa: any) {
     const actionSheet = await this.actionSheetCtrl.create({
       header: 'O que deseja fazer?',
-      buttons:
-        [
+      mode: 'ios',
+      buttons:[
           {
             text: tarefa.feito ? 'Colocar Como Pendente' : 'Marcar Como Realizado',
             icon: tarefa.feito ? 'close-circle' : 'checkmark-circle',
@@ -104,10 +104,7 @@ export class HomePage {
           {
             text: 'Cancel',
             role: 'cancel',
-            data: {
-              action: 'cancel',
-            },
-
+            data: {action: 'cancel'},
           }
         ]
 

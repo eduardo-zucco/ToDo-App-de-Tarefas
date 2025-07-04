@@ -34,4 +34,122 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Estilização do Alerta - Vibrante e Contrastante (Tema Azul Claro) */
+.alert-wrapper {
+  // Cores base para o alerta
+  --background: #e0f2fe; // Fundo azul claro suave
+  --border-radius: 10px;
+  --color: #1a1a1a; // Texto quase preto para alto contraste
+
+  // Borda sutil em azul e sombra mais pronunciada
+  border: 1px solid #90caf9;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+  .alert-title {
+    color: #1976d2; // Um azul um pouco mais escuro para o título, dando profundidade
+    font-size: 24px;
+    font-weight: 800;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 12px;
+  }
+
+  .alert-message {
+    font-size: 16px;
+    color: #424242; // Cinza escuro para a mensagem
+    line-height: 1.6;
+  }
+
+  .alert-input {
+    background-color: #bbdefb; // Fundo do input em um azul claro mais saturado
+    border-radius: 6px;
+    color: #1a1a1a;
+    padding: 14px;
+    border: none;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15px;
+    &:focus {
+      outline: 2px solid #007bff; // Borda azul vibrante ao focar
+    }
+  }
+
+  .alert-button {
+    font-weight: 700;
+    border-radius: 6px;
+    margin: 0 8px;
+    padding: 12px 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+
+    &.ion-confirm-button {
+      --background: #007bff; // O azul principal do app
+      --color: #ffffff;
+      &:hover {
+        --background: #0056b3;
+        transform: translateY(-2px);
+      }
+    }
+    &.ion-cancel-button {
+      --background: #757575; // Cinza escuro para cancelar
+      --color: #ffffff;
+      &:hover {
+        --background: #616161;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  // Classes para alertas específicos
+  .custom-alert {
+    --color: #4caf50;
+  }
+
+  .custom-alert-confirm {
+    --color: #f44336;
+  }
+}
+
+/* Estilização do Action Sheet - Moderno e Integrado (Tema Azul Claro) */
+.custom-action-sheet {
+  // Cores base para o action sheet
+  --background: #f0f8ff; /* Fundo muito claro, quase branco-azulado */
+  --color: #333333; /* Texto escuro para contraste no fundo claro */
+  --border-radius: 16px; /* Borda levemente arredondada */
+
+  // Cores dos botões
+  --button-background: #e6f2ff; /* Fundo do botão em um azul muito claro */
+  --button-background-activated: #d4e8ff; /* Azul um pouco mais escuro ao ser ativado */
+  --button-color: #007bff; /* Cor principal do texto do botão: o azul claro do seu app */
+
+  .action-sheet-group {
+    padding: 10px; /* Mais padding para melhor espaçamento */
+  }
+
+  .action-sheet-button {
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    margin-bottom: 8px; /* Mais margem entre os botões */
+    padding: 12px 15px; /* Mais padding interno para o botão ser mais clicável */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Sombra sutil para dar profundidade */
+    transition: background-color 0.2s ease-in-out; /* Transição suave */
+
+    &:last-child {
+      margin-bottom: 0; /* Remove a margem do último botão do grupo */
+    }
+  }
+
+  .action-sheet-title {
+    color: #1976d2; /* Um azul um pouco mais escuro para o título, dando destaque */
+    font-size: 20px; /* Um pouco maior para o título */
+    font-weight: 700; /* Mais negrito */
+    padding: 16px 20px; /* Padding para o título */
+    text-align: center; /* Centraliza o título */
+    border-bottom: 1px solid #e0e0e0; /* Linha sutil para separar o título */
+    margin-bottom: 10px; /* Espaçamento abaixo da linha */
+  }
+}
